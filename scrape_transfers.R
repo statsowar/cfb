@@ -1,11 +1,8 @@
 library(rvest)
 library(tidyverse)
 
-dat <- read_html("https://247sports.com/Season/2021-Football/TransferPortal/")%>% 
-  html_nodes(css = "#page-content > div > section > section > div > ul > li:nth-child(1)") %>%
-  html_text() %>% as.list()
-
-names <- str_split(dat, pattern = " ")
+# GET ALL TRANSFERS
+######################################################################################
 
 dat2 <-
   read_html("https://247sports.com/Season/2021-Football/TransferPortal/") %>% 
@@ -26,6 +23,7 @@ transfer <- a %>%
     hs = ifelse(!grepl("(HS)", hs), transfer, hs), 
     transfer = ifelse(eligible == "" & grepl("(HS)", transfer), "", transfer)) %>%
   mutate(position = trimws(position))
+
 
 # QUARTERBACKS
 ######################################################################################
@@ -66,7 +64,6 @@ qbs<-rbind(qbs, tmp2)
 }
 
 
-
 # RUNNING BACKS
 ######################################################################################
 rbs <- data.frame()
@@ -104,10 +101,6 @@ for(i in len:end){
   
   rbs<-rbind(rbs, tmp2)
 }
-
-
-
-
 
 
 # WRs
@@ -150,10 +143,6 @@ for(i in len:end){
 }
 
 
-
-
-
-
 # OLINE
 ######################################################################################
 ol <- data.frame()
@@ -192,7 +181,6 @@ for(i in len:end){
   
   ol<-rbind(ol, tmp2)
 }
-
 
 
 # DLINE
@@ -235,9 +223,6 @@ for(i in len:end){
 }
 
 
-
-
-
 # LINEBACKERS
 ######################################################################################
 lbs <- data.frame()
@@ -276,7 +261,6 @@ for(i in len:end){
   
   lbs<-rbind(lbs, tmp2)
 }
-
 
 
 # DBs
