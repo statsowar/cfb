@@ -193,6 +193,8 @@ for(i in len:end){
   ol<-rbind(ol, tmp2)
 }
 
+
+
 # DLINE
 ######################################################################################
 dl <- data.frame()
@@ -232,7 +234,11 @@ for(i in len:end){
   dl<-rbind(dl, tmp2)
 }
 
-# LINEBACKER
+
+
+
+
+# LINEBACKERS
 ######################################################################################
 lbs <- data.frame()
 lb.transfer <- transfer %>% filter(position %in% c("LB", "OLB", "ILB"))
@@ -271,6 +277,10 @@ for(i in len:end){
   lbs<-rbind(lbs, tmp2)
 }
 
+
+
+# DBs
+######################################################################################
 dbs <- data.frame()
 db.transfer <- transfer %>% filter(position %in% c("ATH", "CB", ""))
 len <- i + 2
@@ -310,7 +320,8 @@ for(i in len:end){
 }
 
 
-
+# COMBINE AND EXPORT
+######################################################################################
 destination <- rbind(qbs, rbs, wrs, ol, dl, lbs, dbs)
 
 transfer.no.st <- transfer %>% filter(row_number() < i)
