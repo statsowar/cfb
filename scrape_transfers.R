@@ -197,8 +197,8 @@ for(i in len:end){
 ######################################################################################
 dl <- data.frame()
 dl.transfer <- transfer %>% filter(position %in% c("DL", "DT", "SDE", "WDE", "Edge"))
-len <- i + 1
-end <- nrow(dl.transfer)
+len <- i + 2
+end <- len + nrow(dl.transfer) - 1
 for(i in len:end){
   
   css_string <- paste0("#page-content > div > section > section > div > ul > li:nth-child(", i, ") > div.transfer-institution > a")
@@ -236,7 +236,7 @@ for(i in len:end){
 ######################################################################################
 lbs <- data.frame()
 lb.transfer <- transfer %>% filter(position %in% c("LB", "OLB", "ILB"))
-len <- i + 1
+len <- i + 2
 end <- len + nrow(lb.transfer) - 1
 for(i in len:end){
   
@@ -273,7 +273,7 @@ for(i in len:end){
 
 dbs <- data.frame()
 db.transfer <- transfer %>% filter(position %in% c("ATH", "CB", ""))
-len <- i + 1
+len <- i + 2
 end <- len + nrow(db.transfer) - 1
 for(i in len:end){
     
